@@ -1,14 +1,9 @@
 function Copy-ItemToDesktop{
      Param(
        [Parameter(ValueFromPipeline)]
-       [psobject]$InputObject,
-       [Parameter(ValueFromPipeline)]
-       [string[]]$Path
+       [psobject]$InputObject
      )
      Process{
-       if($Path -ne ""){
-         $InputObject = Get-Item -Path $Path
-       }
        if($InputObject.PSIsContainer){
          $Destination = "~\Desktop" + ($InputObject.FullName | Split-Path -NoQualifier)
          if(Test-Path $Destination){
